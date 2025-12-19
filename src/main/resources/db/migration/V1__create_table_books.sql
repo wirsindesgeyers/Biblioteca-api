@@ -1,0 +1,13 @@
+CREATE TABLE BOOKS (
+
+id BIGSERIAL PRIMARY KEY,
+title VARCHAR(150) NOT NULL,
+isbn VARCHAR(13) NOT NULL UNIQUE,
+price NUMERIC(10,2) NOT NULL,
+published_date DATE
+
+CONSTRAINT price_positive CHECK (price>=0),
+CONSTRAINT date_past CHECK (published_date<=CURRENT_DATE)
+
+
+);
