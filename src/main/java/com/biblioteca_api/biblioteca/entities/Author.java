@@ -2,6 +2,8 @@ package com.biblioteca_api.biblioteca.entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,7 +28,8 @@ public class Author {
     private String name;
 
     @Column(name = "birth_date")
-    @NotBlank
+    @NotNull
+    @PastOrPresent
     private LocalDate birthdate;
 
     @OneToMany(mappedBy = "author")

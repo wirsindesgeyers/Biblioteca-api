@@ -1,5 +1,6 @@
 package com.biblioteca_api.biblioteca.controller;
 
+import java.net.URI;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.biblioteca_api.biblioteca.dto.BookRequestDTO;
 import com.biblioteca_api.biblioteca.dto.BookResponseDTO;
 import com.biblioteca_api.biblioteca.entities.Book;
@@ -58,7 +59,12 @@ public class BookController {
 
         BookResponseDTO response = new BookResponseDTO(book);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("{/id}")
+                .buildAndExpand(book.getId())
+                .toUri();
+
+        return ResponseEntity.created(location).body(response);
     }
 
     // (PUT) - EDITAR LIVRO
