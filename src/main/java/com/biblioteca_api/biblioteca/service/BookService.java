@@ -6,10 +6,10 @@ import com.biblioteca_api.biblioteca.entities.Book;
 import com.biblioteca_api.biblioteca.infra.exceptions.BookAlreadyExistsException;
 import com.biblioteca_api.biblioteca.repository.BookRepository;
 
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
