@@ -1,5 +1,5 @@
 
-# 📚 Litstream Core
+# 🏛️ ExLibris
 
 <div align="center">
 
@@ -10,9 +10,10 @@
 
 <br>
 
-**A modern RESTful API for library management, handling books, authors, loans, and user authentication.**
+**A modern RESTful API for library management and social discovery.**
+<br>
+*Inspired by Letterboxd, ExLibris combines robust inventory management with social features like reviews, ratings, and reading tracking.*
 
-[Getting Started](#-getting-started) • [API Documentation](#-api-documentation) • [Project Structure](#-project-structure)
 
 </div>
 
@@ -22,8 +23,9 @@
 
 - **📚 Book Management** – Full CRUD operations for books with ISBN validation.
 - **✍️ Author Management** – Create and manage authors and link them to their bibliographies.
-- **👤 User Management** – User registration system with email validation.
-- **📅 Loan System** – Track book loans, manage expiration dates, and calculate fees.
+- **👤 User Management** –(In Progress) User registration system with email validation.
+- **📅 Loan System** –(In Progress) Track book loans, manage expiration dates, and calculate fees.
+- **⭐ Social & Discovery** – *(In Progress)* Rate books, write reviews, and track reading status.
 - **🔍 API Documentation** – Interactive Swagger UI with OpenAPI 3.0 integration.
 - **🗄️ Database Migrations** – Version-controlled schema management using Flyway.
 
@@ -52,8 +54,8 @@ Before running the application, ensure you have the following installed:
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/wirsindesgeyers/LitStreamCore.git
-cd Biblioteca-api
+git clone https://github.com/wirsindesgeyers/ExLibris.git
+cd ExLibris
 
 ```
 
@@ -105,6 +107,13 @@ The API is fully documented using Swagger/OpenAPI. Once the application is runni
 | --- | --- | --- |
 | `POST` | `/api/author` | Register a new author |
 
+### 👤 Reviews (Roadmap)
+
+| Method | Endpoint | Description |
+| --- | --- | --- |
+| `POST` | `/api/books/{id}/reviews` | Add a review and rating |
+| `GET` | `/api/books/{id}/reviews` | Get reviews for a book |
+
 *(Full list of endpoints available in Swagger UI)*
 
 ## 🏗️ Project Structure
@@ -113,23 +122,23 @@ The project follows a clean architecture pattern with separated concerns:
 
 ```
 src/main/java/com/biblioteca_api/biblioteca/
-├── BibliotecaApplication.java      # Application entry point
-├── controller/                     # REST Controllers (API Layer)
-│   ├── BookController.java
-│   └── AuthorController.java
-├── service/                        # Business Logic Layer
-├── repository/                     # Data Access Layer (Spring Data JPA)
-├── entities/                       # JPA Entities (Database Models)
-│   ├── Book.java
-│   ├── Author.java
-│   ├── User.java
-│   └── Loan.java
-├── dto/                            # Data Transfer Objects
-│   ├── BookRequestDTO.java
-│   └── AuthorResponseDTO.java
-└── infra/                          # Infrastructure & Configs
-    ├── GlobalExceptionHandler.java
-    └── exceptions/
+├── BibliotecaApplication.java      # Application entry point
+├── controller/                     # REST Controllers (API Layer)
+│   ├── BookController.java
+│   └── AuthorController.java
+├── service/                        # Business Logic Layer
+├── repository/                     # Data Access Layer (Spring Data JPA)
+├── entities/                       # JPA Entities (Database Models)
+│   ├── Book.java
+│   ├── Author.java
+│   ├── User.java
+│   └── Loan.java
+├── dto/                            # Data Transfer Objects
+│   ├── BookRequestDTO.java
+│   └── AuthorResponseDTO.java
+└── infra/                          # Infrastructure & Configs
+    ├── GlobalExceptionHandler.java
+    └── exceptions/
 
 ```
 
